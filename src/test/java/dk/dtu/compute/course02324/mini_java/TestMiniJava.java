@@ -128,8 +128,8 @@ public class TestMiniJava{
 
     @Test
     public void testWronglyTypedProgram() {
-        int i;
-        int j = i = 2 + (i = 3) ;
+        // int i;
+        // int j = i = 2 + (i = 3) ;
 
         Statement statement =
                 new Sequence(

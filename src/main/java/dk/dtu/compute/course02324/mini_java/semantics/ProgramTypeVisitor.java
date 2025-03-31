@@ -14,17 +14,12 @@ public class ProgramTypeVisitor extends ProgramVisitor {
      * This is a very simple map of operators to their possible types.
      * Note the typing of an operator is very simplistic for now; the
      * types of all operands and the result of the operation are the same.<p>
-     *
-     * TODO Assignment 6a: This map does contain only some few examples of types
-     *      on which the operators should work. In Assignment 6a, this list must
-     *      be complete for all (primmitive) types of Mini Java on which these
-     *      operators make sense.
      */
     final private Map<Operator,List<Type>> operatorTypes = Map.ofEntries(
-            // Unary operators
+            // Unaries
             entry(PLUS1, List.of(INT, FLOAT)),
             entry(MINUS1, List.of(INT, FLOAT)),
-            // Binary operators
+            // Binaries
             entry(PLUS2, List.of(INT, FLOAT)),
             entry(MINUS2, List.of(INT, FLOAT)),
             entry(MULT, List.of(INT, FLOAT)),
