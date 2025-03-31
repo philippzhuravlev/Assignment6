@@ -301,6 +301,29 @@ public class MiniJavaRun {
         // );
 
         // printTypeEvaluate(statement6);
+
+        
+        // SELF-MADE
+        Statement statement7 = new Sequence(
+                new Declaration(INT, new Var("i")),
+                new Declaration(
+                        INT,
+                        new Var("j"),
+                        new Assignment(
+                                new Var("i"),
+                                new OperatorExpression(
+                                        Operator.PLUS2,
+                                        new IntLiteral(8),
+                                        new Assignment(
+                                                new Var("i"),
+                                                new IntLiteral(4)
+                                        )
+                                )
+                        )
+                )
+        );
+        printTypeEvaluate(statement7);
+
     }
 
 }
