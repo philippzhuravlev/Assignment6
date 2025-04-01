@@ -228,5 +228,16 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
         Number result = function.apply(args);
         values.put(operatorExpression, result);
     }
+    
+    @Override
+    public void visit(IfThenElse ifThenElse) {
+        ifThenElse.getCondition().accept(this);
+        Number conditionValue = values.get(ifThenElse.getCondition()); // like in the other visit() methods
 
+        if (conditionValue.doubleValue() >= 0) {
+            ifThenElse.getThenStatement().accept(this);
+        } else {
+            ifThenElse.getElseStatement().accept(this);
+        }
+    }
 }
