@@ -39,7 +39,7 @@ First we imported our previous answers from assignment 6a into the handout, "ass
 - More exemplary ASTs (statements 7-9) by mimicking statements 1-6
 - Finished the implementation of printStatement 
 
-## Assignment 6b: Control Flow + Optional Tast
+## Assignment 6b: Control Flow + Optional Task
 
 Then we worked on the java control flows, including a decision-making statement (if-then-else) and the optional looping statement (a while loop). There are no booleans, so true/false statements are positive/negative INTs respectively
 
