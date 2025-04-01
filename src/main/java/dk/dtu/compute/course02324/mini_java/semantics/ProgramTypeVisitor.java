@@ -146,4 +146,17 @@ public class ProgramTypeVisitor extends ProgramVisitor {
         }
     }
 
+    @Override
+    public void visit(IfThenElse ifThenElse) {
+        // modelled after whileLoop visit()
+        ifThenElse.getCondition().accept(this);
+        Type type = typeMapping.get(ifThenElse.getCondition());
+
+        if (type == null || !type.equals(INT)) {
+            problems.add("Type must be INT");
+        }
+
+        ifThenElse.getThenStatement().accept(this);
+        ifThenElse.getElseStatement().accept(this);
+    }
 }
