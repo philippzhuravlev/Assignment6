@@ -92,6 +92,10 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
      * The map below associates each operator for each possible type with a function
      * (lambda expression), that represents the semantics of that operation. These
      * define what happens when the operator needs to be executed.<p>
+     *
+     * TODO Assignment 6a: This map and the functions above need to be extended in Assignment 6a
+     *      (all operations with the respective types required in assignment must be defined above
+     *      and added to the mapping below). -- done
      */
     final private Map<Operator, Map<Type, Function<List<Number>,Number>>> operatorFunctions = Map.ofEntries(
             // UNARIES
@@ -155,13 +159,20 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
     @Override
     public void visit(PrintStatement printStatement) {
         printStatement.expression.accept(this);
-        
+
+        /* TODO Assignment 6a: Here some code which actually executes the
+                print operation must be added. It should actually print out the
+                prefix of the print statement and then the CURRENT value of the
+                expression. -- done
+         */
+
         // NB: Prefix is just e.g. "i: [value]", nothing big
         System.out.print(printStatement.prefix + values.get(printStatement.expression));
     }
 
     @Override
     public void visit(WhileLoop whileLoop) {
+        // evaluate the loop condition
         whileLoop.expression.accept(this);
 
         /* TODO Assignment 6b: Here some code which actually executes the
@@ -175,9 +186,20 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
                 For doing this, the respective accept methods need to be
                 issued on the relevant "components" of the while statements,
                 and the values of these "components" can then be obtained by
-                looking them up in the values Map.
+                looking them up in the values Map. -- done
          */
 
+        Number value = values.get(whileLoop.expression);
+
+        // continue while condition is >= 0
+        while (value != null && value.intValue() >= 0) {
+            // execute loop body
+            whileLoop.statement.accept(this);
+
+            // re-evaluate the condition
+            whileLoop.expression.accept(this);
+            value = values.get(whileLoop.expression);
+        }
     }
 
     @Override
