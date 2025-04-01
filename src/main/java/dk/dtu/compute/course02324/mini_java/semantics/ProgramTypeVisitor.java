@@ -78,10 +78,9 @@ public class ProgramTypeVisitor extends ProgramVisitor {
     public void visit(WhileLoop whileLoop) {
         whileLoop.expression.accept(this);
 
-        /* TODO Assignment 6b: Here some code most be implemented for
-                checking that the expression is of type integer. If not,
-                the code must add a problem to the problem list.
-         */
+        if (!typeMapping.get(whileLoop.expression).equals(INT)) {
+            problems.add("While loop expression must be of type int.");
+        }
 
         whileLoop.statement.accept(this);
     }

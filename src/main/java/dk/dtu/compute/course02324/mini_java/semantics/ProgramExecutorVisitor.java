@@ -164,20 +164,16 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
     public void visit(WhileLoop whileLoop) {
         whileLoop.expression.accept(this);
 
-        /* TODO Assignment 6b: Here some code which actually executes the
-                while loop must be added. This code should get the current value
-                of the expression, and if that expression is greater or equal
-                than 0, execute the statement of the loop (by recursively
-                executing the statement by invoking the accept method). After
-                that, it should trigger the evaluation of the expression of the
-                while loop again. If the value of this expression is still greater
-                or equal than 0, the execution of the loop should be continued ...
-                For doing this, the respective accept methods need to be
-                issued on the relevant "components" of the while statements,
-                and the values of these "components" can then be obtained by
-                looking them up in the values Map.
-         */
+        Number result = values.get(whileLoop.expression);
 
+        if (result.intValue() >= 0) {
+            whileLoop.statement.accept(this);
+            whileLoop.expression.accept(this);
+            result = values.get(whileLoop.expression);
+            if (result.intValue() >= 0) {
+                visit(whileLoop);
+            }
+        }
     }
 
     @Override
