@@ -352,7 +352,7 @@ public class TestMiniJava{
                 Declaration(INT, Var("i"), Literal(0)),
                 Declaration(INT, Var("count"), Literal(0)),
                 WhileLoop(
-                        OperatorExpression(MINUS2, Literal(3), Var("i")), // while (i < 3)
+                        OperatorExpression(MINUS2, Literal(2), Var("i")), // while (i < 3)
                         Sequence(
                                 Assignment(Var("count"),
                                         OperatorExpression(PLUS2, Var("count"), Literal(1))
