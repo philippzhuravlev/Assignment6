@@ -192,13 +192,16 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
         Number value = values.get(whileLoop.expression);
 
         // continue while condition is >= 0
-        while (value != null && value.intValue() >= 0) {
+        if (value.intValue() >= 0) {
             // execute loop body
             whileLoop.statement.accept(this);
 
-            // re-evaluate the condition
             whileLoop.expression.accept(this);
             value = values.get(whileLoop.expression);
+            // recursively call the method to re-evaluate the condition
+            if (value.intValue() >= 0) {
+                visit(whileLoop);
+            }
         }
     }
 
