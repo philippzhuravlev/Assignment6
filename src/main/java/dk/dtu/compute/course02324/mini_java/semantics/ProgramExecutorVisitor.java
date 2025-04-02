@@ -152,14 +152,21 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
         }
     }
 
+    /**
+     * Evaluates and prints the expression with its prefix, i.e. "i: [value]"
+     * @param printStatement The print statement to execute
+     */
     @Override
     public void visit(PrintStatement printStatement) {
         printStatement.expression.accept(this);
         
-        // NB: Prefix is just e.g. "i: [value]", nothing big
         System.out.print(printStatement.prefix + values.get(printStatement.expression));
     }
 
+    /**
+     * Executes the while loop if its condition evaluates to non-negative.
+     * @param whileLoop The while loop statement to execute
+     */
     @Override
     public void visit(WhileLoop whileLoop) {
         whileLoop.expression.accept(this);
@@ -229,6 +236,10 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
         values.put(operatorExpression, result);
     }
     
+    /**
+     * Executes the if-then-else statement based on the condition
+     * @param ifThenElse The if-then-else statement to execute
+     */
     @Override
     public void visit(IfThenElse ifThenElse) {
         ifThenElse.getCondition().accept(this); 

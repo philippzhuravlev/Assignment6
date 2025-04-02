@@ -75,6 +75,10 @@ public class ProgramTypeVisitor extends ProgramVisitor {
         // (which the above accept actually does).
     }
 
+    /**
+     * Visits the while loop and checks if the expression is an INT
+     * @param whileLoop The while loop to visit
+     */
     public void visit(WhileLoop whileLoop) {
         whileLoop.expression.accept(this);
         Type type = typeMapping.get(whileLoop.expression); // like in the other visit()s
@@ -146,6 +150,10 @@ public class ProgramTypeVisitor extends ProgramVisitor {
         }
     }
 
+    /**
+     * Visits the if-then-else statement and checks if the condition is an INT
+     * @param ifThenElse The if-then-else statement to visit
+     */
     @Override
     public void visit(IfThenElse ifThenElse) {
         // modelled after whileLoop visit()

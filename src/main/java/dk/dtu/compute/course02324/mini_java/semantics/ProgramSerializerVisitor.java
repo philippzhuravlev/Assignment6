@@ -150,6 +150,12 @@ public class ProgramSerializerVisitor extends ProgramVisitor  {
         return result.toString();
     }
 
+    /**
+     * Visits the if-then-else statement and serializes it to the form
+     * if ( [condition] ) { [thenStatement] } else { [elseStatement] }
+     * with proper indentation (i.e. tabs)
+     * @param ifThenElse The if-then-else statement to visit
+     */
     @Override
     public void visit(IfThenElse ifThenElse) {
         result.append("if ( ");                             

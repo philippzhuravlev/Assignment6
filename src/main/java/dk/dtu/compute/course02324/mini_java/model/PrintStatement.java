@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class PrintStatement implements Statement {
 
-    final public String prefix;
+    final public String prefix; // e.g. "i: " to be printed out
 
     final public Expression expression;
 
