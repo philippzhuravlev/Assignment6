@@ -34,21 +34,24 @@ Assignment6/
 
 ## Assignment 6a: Operators
 
-First we imported our previous answers from assignment 6a into the handout, "assignment 6 new". This included
+First we imported our previous answers from assignment 6a into the handout, "assignment 6 new". This includes
 
-- Binaries: `+`, `-`, (labelled "PLUS2" and "MINUS2") `*`, `/`, `%`.
-- Unaries: `+`, `-` (labelled "PLUS1" and "MINUS1") 
+- Binaries: `+`, `-`, (labelled "PLUS2" and "MINUS2") `*`, `/`, `%` and Unaries: `+`, `-` (labelled "PLUS1" and "MINUS1"). These were similar to the already-existing implementations, e.g. PLUS2
 - Added binaries and unaries to operatorFunctions and operatorTypes Maps
 - More exemplary ASTs (statements 7-9) by mimicking statements 1-6
-- Finished the implementation of printStatement 
+- Finished the implementation of printStatement. Though "assignment 6a new" implemented much of this, our original implementation was:
+  - Added misc visit() methods, e.g. Shortcut, VisitCoordinator and ProgramVisitor
+  - Writing out PrintStatement.java, modelled after the other java classes provided to us
+  - Did the actual printing logic in what is now called ProgramExecutorVisitor.java, just using Java's println
+  - Added functionality to ProgramSerializerVisitor, mostly modelled after other visit() methods but again using System.out.println
 
 ## Assignment 6b: Control Flow
 
 Then we worked on the java control flows, including a decision-making statement (if-then-else) and the optional looping statement (a while loop). There are no booleans, so true/false statements are positive/negative INTs
 
-First we created a while loop java file
-  - Implemented type checking (in ProgramTypeVisitor)
-  - Looping logic via recursion of visit() method (in ProgramExecutorVisitor)
+First we used the java while loop file provided to us, and then did the TODOs:
+  - Implemented type checking so it only works for INTs, our proxy for booleans (in ProgramTypeVisitor)
+  - Looping logic via recursion of visit() method, following the instructions and TODO (in ProgramExecutorVisitor)
 
 ## Assignment 6b: Optional Task
 Then we created IfThenElse java file. This was modelled after the while loop file, though needed the statement to be split between a thenStatement and an elseStatement
