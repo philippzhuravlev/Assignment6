@@ -165,9 +165,9 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
         whileLoop.expression.accept(this);
         Number value = values.get(whileLoop.expression); // like in the other visit()s
         
-        if (value.intValue() >= 0) {
-            whileLoop.statement.accept(this);
-            whileLoop.expression.accept(this);
+        if (value.intValue() >= 0) {          // modelled after the instructions 
+            whileLoop.statement.accept(this); // does recursion behind the scenes
+            whileLoop.expression.accept(this); 
             value = values.get(whileLoop.expression);
             if (value.intValue() >= 0) {
                 visit(whileLoop);
@@ -231,12 +231,12 @@ public class ProgramExecutorVisitor extends ProgramVisitor {
     
     @Override
     public void visit(IfThenElse ifThenElse) {
-        ifThenElse.getCondition().accept(this);
+        ifThenElse.getCondition().accept(this); 
         Number conditionValue = values.get(ifThenElse.getCondition()); // like in the other visit() methods
 
         if (conditionValue.doubleValue() >= 0) {
             ifThenElse.getThenStatement().accept(this);
-        } else {
+        } else { // i.e. [condition] < 0 
             ifThenElse.getElseStatement().accept(this);
         }
     }

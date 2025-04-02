@@ -152,15 +152,15 @@ public class ProgramSerializerVisitor extends ProgramVisitor  {
 
     @Override
     public void visit(IfThenElse ifThenElse) {
-        result.append("if ( ");
-        ifThenElse.getCondition().accept(this); // i.e. if ([condition])
-        result.append(" ) {" + System.lineSeparator());
+        result.append("if ( ");                             
+        ifThenElse.getCondition().accept(this);             
+        result.append(" ) {" + System.lineSeparator());     // if ( [condition] )
         indentLevel++; // = tab
-        ifThenElse.getThenStatement().accept(this);
+        ifThenElse.getThenStatement().accept(this);         // { [thenStatement] }
         indentLevel--;
-        result.append("} else {" + System.lineSeparator());
+        result.append("} else {" + System.lineSeparator()); 
         indentLevel++;
-        ifThenElse.getElseStatement().accept(this);
+        ifThenElse.getElseStatement().accept(this);         // else { [elseStatement] }
         indentLevel--;
         result.append("}"); 
     }

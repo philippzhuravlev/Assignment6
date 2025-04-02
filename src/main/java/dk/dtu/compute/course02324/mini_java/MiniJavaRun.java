@@ -282,6 +282,8 @@ public class MiniJavaRun {
 
         System.out.println("And now some syntactially wrong examples (crashing) when building statement!");
 
+        // Commented out because it crashes the program
+
         // Statement statement6 = new Sequence(
         //         new Declaration(INT, new Var("i")),
         //         new Declaration(

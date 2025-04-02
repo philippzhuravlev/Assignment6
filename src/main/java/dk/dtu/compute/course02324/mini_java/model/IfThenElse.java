@@ -1,12 +1,12 @@
 package dk.dtu.compute.course02324.mini_java.model;
 
-import dk.dtu.compute.course02324.mini_java.infrastructure.VisitAcceptor;
 import dk.dtu.compute.course02324.mini_java.semantics.ProgramVisitor;
 
-public class IfThenElse implements Statement {
-    private final Expression condition;
-    private final Statement thenStatement;
-    private final Statement elseStatement;
+// modelled after whileloop, but needs statements 
+public class IfThenElse implements Statement { 
+    private final Expression condition;    // if ( [condition] )
+    private final Statement thenStatement; // { [thenStatement] }
+    private final Statement elseStatement; // else { [elseStatement] }
 
     public IfThenElse(Expression condition, Statement thenStatement, Statement elseStatement) {
         this.condition = condition;
